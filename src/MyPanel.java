@@ -9,6 +9,15 @@ public class MyPanel extends JPanel {
     public static Timer timer;
     public MyPanel(){
         setLayout(null);
+        setSize(500,500);
+        setBackground(Color.BLUE);
+        add(new Balloon(this));
+        setLabels();
+        setTimer();
+        timer.start();
+        setVisible(true);
+    }
+    public void setLabels(){
         scoreLabel.setBounds(0,0,200,75);
         scoreLabel.setForeground(Color.WHITE);
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 25));
@@ -17,9 +26,8 @@ public class MyPanel extends JPanel {
         timeLabel.setForeground(Color.WHITE);
         timeLabel.setFont(new Font("Arial", Font.BOLD, 25));
         add(timeLabel);
-        setSize(500,500);
-        setBackground(Color.BLUE);
-        add(new Balloon(this));
+    }
+    public void setTimer(){
         timer = new Timer(1000, e ->{
             if(time >0) {
                 time--;
@@ -30,7 +38,5 @@ public class MyPanel extends JPanel {
                 timer.stop();
             }
         });
-        timer.start();
-        setVisible(true);
     }
 }
